@@ -17,6 +17,12 @@ steps:
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
+  id: cd
+  args:
+  - cd ckan
+
+# This step builds the container image.
+- name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
   - 'build'
