@@ -20,7 +20,7 @@ steps:
   id: cd
   entrypoint: 'bash'
   args:
-  - cd /workspace/ckan
+  - cd dockerfile_ae1280/ckan
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
