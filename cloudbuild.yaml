@@ -16,21 +16,11 @@
 steps:
 
 # This step builds the container image.
-- name: 'gcr.io/cloud-builders/git'
-  id: cd
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    ls
-    cd ckan
-#  - cd dockerfile_ae1280/ckan
-
-# This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
   - 'build'
   - '-t'
   - 'eu.gcr.io/fleet-coyote-341511/ckan_295:$SHORT_SHA'
-  - '.'
+  - '-f'
+  - ckan/Dockerfile
