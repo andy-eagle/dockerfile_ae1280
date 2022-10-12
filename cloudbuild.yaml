@@ -29,8 +29,4 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   entrypoint: /bin/bash
-  args:
-  - 'build'
-  - '-t'
-  - 'eu.gcr.io/fleet-coyote-341511/ckan_295:$(cat _TAG)'
-  - ./ckan
+  args: ['-c', 'docker build -t eu.gcr.io/fleet-coyote-341511/ckan_295:$(cat _TAG) ./ckan']
