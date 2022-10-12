@@ -30,3 +30,15 @@ steps:
   id: Build
   entrypoint: /bin/bash
   args: ['-c', 'docker build -t eu.gcr.io/fleet-coyote-341511/ckan_295:$(cat _TAG) ./ckan']
+
+# This step generates the new manifest
+- name: 'gcr.io/cloud-builders/git'
+  secretEnv: ['SSH_KEY']
+  id: Generate manifest
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    cat _TAG
+    sed -i "s/FTD_TEST_VAR/$(cat _TAG)/g" dev_ckan-deployment.yaml
+    cat dev_ckan-deployment.yaml
