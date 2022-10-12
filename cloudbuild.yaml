@@ -15,6 +15,16 @@
 # [START cloudbuild]
 steps:
 
+# This step grabs the FTD_TEST var
+- name: 'gcr.io/cloud-builders/docker'
+  id: Grab var
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    FTD_TEST=$(cat .env.template|grep FTD_TEST| awk -F '=' '{ print $2}')
+    echo $FTD_TEST
+
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
