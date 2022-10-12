@@ -22,8 +22,8 @@ steps:
   args:
   - '-c'
   - |
-    FTD_TEST=$(cat .env.template|grep FTD_TEST| awk -F '=' '{ print $2}')
-    echo $FTD_TEST
+    cat .env.template|grep FTD_TEST| awk -F '=' '{ print $2}' > _TAG
+
 
 # This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
@@ -31,5 +31,5 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'eu.gcr.io/fleet-coyote-341511/ckan_295:$SHORT_SHA'
+  - 'eu.gcr.io/fleet-coyote-341511/ckan_295:$(cat _TAG)'
   - ./ckan
