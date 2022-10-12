@@ -33,7 +33,6 @@ steps:
 
 # This step generates the new manifest
 - name: 'gcr.io/cloud-builders/git'
-  secretEnv: ['SSH_KEY']
   id: Generate manifest
   entrypoint: 'bash'
   args:
