@@ -32,6 +32,4 @@ steps:
   - 'build'
   - '-t'
   - 'eu.gcr.io/fleet-coyote-341511/ckan_295:$SHORT_SHA'
-  - '.'
-  - '-f'
-  - ckan/Dockerfile
+  - ./ckan
